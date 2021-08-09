@@ -2,10 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class GameRating:
+class GameRating(models.Model):
 
     player = models.ForeignKey(User, on_delete=models.CASCADE)
-    game = models.ForeignKey("Game", on_delete=models.DO_NOTHING, related_name='pictures')
+    game = models.ForeignKey("Game", on_delete=models.CASCADE)
     rating = models.DecimalField(max_digits=2, decimal_places=1)
 
     def __str__(self):

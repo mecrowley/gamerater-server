@@ -1,0 +1,41 @@
+[
+    {
+        "model": "raterapi.game",
+        "pk": 1,
+        "fields": {
+            "title": "Welcome To",
+            "description": "As an architect in Welcome To..., you want to build the best new town in the United States of the 1950s by adding resources to a pool, hiring employees, and more.",
+            "designer": "Benoit Turpin",
+            "year_released": 2018,
+            "number_of_players": 4,
+            "gameplay_duration": "01:00:00",
+            "age_recommendation": 10
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 2,
+        "fields": {
+            "title": "Settlers of Catan",
+            "description": "Collect and trade resources to build up the island of Catan in this modern classic.",
+            "designer": "Klaus Teuber",
+            "year_released": 1995,
+            "number_of_players": 4,
+            "gameplay_duration": "01:30:00",
+            "age_recommendation": 12
+        }
+    },
+    {
+        "model": "raterapi.game",
+        "pk": 3,
+        "fields": {
+            "title": "Dungeons & Dragons",
+            "description": "Dungeons & Dragons (commonly abbreviated as D&D or DnD) is a fantasy tabletop role-playing game (RPG) originally designed by Gary Gygax and Dave Arneson.",
+            "designer": "Wizards of the Coast",
+            "year_released": 1974,
+            "number_of_players": 5,
+            "gameplay_duration": "1:30:00",
+            "age_recommendation": 10
+        }
+    }
+]
