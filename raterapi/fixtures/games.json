@@ -8,7 +8,7 @@
             "designer": "Benoit Turpin",
             "year_released": 2018,
             "number_of_players": 4,
-            "gameplay_duration": "01:00:00",
+            "gameplay_duration": 30,
             "age_recommendation": 10
         }
     },
@@ -21,7 +21,7 @@
             "designer": "Klaus Teuber",
             "year_released": 1995,
             "number_of_players": 4,
-            "gameplay_duration": "01:30:00",
+            "gameplay_duration": 60,
             "age_recommendation": 12
         }
     },
@@ -34,7 +34,7 @@
             "designer": "Wizards of the Coast",
             "year_released": 1974,
             "number_of_players": 5,
-            "gameplay_duration": "1:30:00",
+            "gameplay_duration": 90,
             "age_recommendation": 10
         }
     }
