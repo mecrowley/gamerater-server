@@ -6,7 +6,7 @@ class GameRating(models.Model):
 
     player = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey("Game", on_delete=models.CASCADE)
-    rating = models.DecimalField(max_digits=2, decimal_places=1)
+    rating = models.IntegerField()
 
     def __str__(self):
         return f'Rating for {self.game} by {self.player}'
