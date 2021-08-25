@@ -28,7 +28,7 @@ class GameReviewView(ViewSet):
         try:
             game_review.save()
             serializer = GameReviewSerializer(game_review, context={'request': request})
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
@@ -44,6 +44,8 @@ class GameReviewView(ViewSet):
             game = GameReview.objects.get(pk=pk)
             serializer = GameReviewSerializer(game, context={'request': request})
             return Response(serializer.data)
+        except GameReview.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
@@ -98,9 +100,6 @@ class GameReviewView(ViewSet):
             game_review.delete()
 
             return Response({}, status=status.HTTP_204_NO_CONTENT)
-
-        except Game.DoesNotExist as ex:
-            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
