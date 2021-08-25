@@ -86,6 +86,52 @@ class GameTests(APITestCase):
         self.assertEqual(json_response["gameplay_duration"], 30)
         self.assertEqual(json_response["age_recommendation"], 10)
 
+
+    def test_get_all_games(self):
+        """
+        Ensure we can get an existing game.
+        """
+        game = Game()
+        game.title = "Welcome To"
+        game.description = "As an architect in Welcome To..., you want to build the best new town in the United States of the 1950s by adding resources to a pool, hiring employees, and more."
+        game.designer = "Benoit Turpin"
+        game.year_released = 2018
+        game.number_of_players = 4
+        game.gameplay_duration = 30
+        game.age_recommendation = 10
+        game.save()
+
+        game2 = Game()
+        game2.title = "Settlers of Catan"
+        game2.description = "Collect and trade resources to build up the island of Catan in this modern classic."
+        game2.designer = "Klaus Teuber"
+        game2.year_released = 1995
+        game2.number_of_players = 4
+        game2.gameplay_duration = 60
+        game2.age_recommendation = 12
+        game2.save()
+
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token)
+        response = self.client.get(f"/games")
+        json_response = json.loads(response.content)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(json_response[0]["title"], "Welcome To")
+        self.assertEqual(json_response[0]["description"], "As an architect in Welcome To..., you want to build the best new town in the United States of the 1950s by adding resources to a pool, hiring employees, and more.")
+        self.assertEqual(json_response[0]["designer"], "Benoit Turpin")
+        self.assertEqual(json_response[0]["year_released"], 2018)
+        self.assertEqual(json_response[0]["number_of_players"], 4)
+        self.assertEqual(json_response[0]["gameplay_duration"], 30)
+        self.assertEqual(json_response[0]["age_recommendation"], 10)
+        self.assertEqual(json_response[1]["title"], "Settlers of Catan")
+        self.assertEqual(json_response[1]["description"], "Collect and trade resources to build up the island of Catan in this modern classic.")
+        self.assertEqual(json_response[1]["designer"], "Klaus Teuber")
+        self.assertEqual(json_response[1]["year_released"], 1995)
+        self.assertEqual(json_response[1]["number_of_players"], 4)
+        self.assertEqual(json_response[1]["gameplay_duration"], 60)
+        self.assertEqual(json_response[1]["age_recommendation"], 12)
+
     def test_change_game(self):
         """
         Ensure we can change an existing game.
