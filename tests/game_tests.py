@@ -7,7 +7,7 @@ from raterapi.models import Game
 class GameTests(APITestCase):
     def setUp(self):
         """
-        Create a new account and create sample category
+        Create a new account
         """
         url = "/register"
         data = {
